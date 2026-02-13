@@ -1,4 +1,4 @@
-//  ----- Deep copy  in permeative data types -----   
+//  ----- Deep copy in primitive data types -----   
 
 console.log("---- passed by value ----");
 
@@ -15,7 +15,7 @@ console.log(g);
 console.log(k)
 
 
-// ------ shallow copy in non permeative data types -----
+// ------ shallow copy in non primitive data types -----
 
 console.log("---- passed  by reference ----");
 

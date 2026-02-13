@@ -1,3 +1,17 @@
+
+// ----- DataType -----
+
+// 1. string   ==> permeative
+// 2. Number
+// 3. boolean
+// 4. undefine
+// 5. null 
+// 6. symbol
+// 7. bigInt
+
+// 8. object   ==> non-permeative
+
+
 // ------ Primitive data types ------
 
 console.log("1. string example")

@@ -30,7 +30,7 @@ console.log("LastIndexOf :", name.lastIndexOf("o"));
 
 // ==> Specific index position <==
 
-// console.log("spacific index find :", name.indexOf("1",5));
+console.log("spacific index find :", name.indexOf("l",2));
 
 // ==> Length <==
 

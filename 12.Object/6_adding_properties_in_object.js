@@ -13,7 +13,6 @@ person["bloodGroup"] = "A";
 
 console.log(person);
 
-
 function Hotel(rating, room, staff) {
     this.rating = rating,
         this.room = room,

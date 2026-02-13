@@ -30,7 +30,7 @@
 
 // console.log("division and assign", k);
 
-// //  ----- 2 assignment  operator -----
+// //  ----- 3 comparison  operator -----
 
 // let num1 = 24;
 // let num2 = "24";
@@ -49,7 +49,7 @@
 // console.log("greater than", k > g);
 
 
-// // ----- 3 logical operator -----
+// // ----- 4 logical operator -----
 
 // let logicK = true;
 
@@ -69,7 +69,7 @@
 // console.log(!logicK);
 
 
-// ----- unary operator -----
+// ----- 5 unary operator -----
 
 let num = 45;
 
@@ -85,7 +85,7 @@ console.log("num", num);
 
 console.log("num", num);
 
-// ----- ternary -----
+// ----- 6 ternary -----
 
 let age = 18;
 
