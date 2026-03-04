@@ -9,4 +9,30 @@ let days = [
     "Wednesday",
     "Thursday",
     "Friday",
-]
+    "Saturday",
+    "Sunday"
+];
+
+console.log("index of:", days.indexOf("Wednesday"));
+
+
+// includes() method 
+
+console.log("include method:", days.includes("Sunday"));
+
+
+
+let alphabet = ["a", "d", "b", "e", "c"];
+
+alphabet.reverse()
+
+console.log("alphabet",alphabet)
+
+
+// sort () method
+
+let numbers = [5, 2, 9, 1, 7];
+
+console.log("descending:", numbers.sort((a, b) => {
+    return b - a;
+}));
