@@ -7,4 +7,7 @@ button.addEventListener("click", (e) => {
 
 });
 
+
+
+
 document.getElementsByClassName("paragraph")[0].textContent = "i playing god of war"
