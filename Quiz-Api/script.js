@@ -21,22 +21,12 @@ const quizData = [
     },
     {
         question: "What is the correct way to write a function?",
-        options: [
-            "function myFunc()",
-            "def myFunc()",
-            "create myFunc()",
-            "func myFunc()"
-        ],
+        options: ["function myFunc()", "def myFunc()", "create myFunc()", "func myFunc()"],
         answer: "function myFunc()"
     },
     {
         question: "Which method converts JSON to a JavaScript object?",
-        options: [
-            "JSON.parse()",
-            "JSON.stringify()",
-            "JSON.convert()",
-            "JSON.toObject()"
-        ],
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.toObject()"],
         answer: "JSON.parse()"
     },
     {
@@ -51,12 +41,7 @@ const quizData = [
     },
     {
         question: "How do you write an arrow function?",
-        options: [
-            "() => {}",
-            "=> () {}",
-            "function => {}",
-            "{} => ()"
-        ],
+        options: ["() => {}", "=> () {}", "function => {}", "{} => ()"],
         answer: "() => {}"
     },
     {
@@ -66,55 +51,82 @@ const quizData = [
     }
 ];
 
+let Que = document.getElementById("Que");
+let questions = document.getElementById("questions");
+let options = document.getElementById("options");
+let button = document.getElementById("btn");
 
-let Que = document.getElementById("Que")
-
-let timer = document.getElementById("timer")
-
-let questions = document.getElementById("questions")
-
-let options = document.getElementById("options")
-
-
-
-let qusCount = 0;
 let queIndex = 0;
+let score = 0;
+let userAnswers = [];
 
-function Quizz() {
+function loadQuestion() {
+    let current = quizData[queIndex];
 
-    let currantQue = quizData[queIndex]
+    Que.innerText = `${queIndex + 1}/${quizData.length}`;
+    questions.innerText = current.question;
 
-    questions.innerText = currantQue.question
+    options.innerHTML = "";
 
-    options.innerText = ""
+    current.options.forEach((opt) => {
+        let btn = document.createElement("button");
+        btn.innerText = opt;
+        btn.classList.add("btn", "btn-outline-success", "m-2");
 
-    currantQue.options.forEach((opt) => {
-        let col = document.createElement("div")
-        col.classList.add("col-md-6")
-        let button = document.createElement("button")
-        button.innerText = opt
-        button.classList.add("btn", "btn-outline-success", "option-btn")
+        btn.onclick = () => selectAnswer(opt);
 
-        col.appendChild(button)
-        options.appendChild(col)
-
-    })
-
+        options.appendChild(btn);
+    });
 }
-Quizz()
 
+function selectAnswer(selected) {
+    let correct = quizData[queIndex].answer;
 
+    userAnswers[queIndex] = selected;
+
+    if (selected === correct) {
+        score++;
+    }
+
+    nextQuestion();
+}
 
 function nextQuestion() {
+    queIndex++;
 
-        if (quizData.length > queIndex) {
-            queIndex++
-            qusCount++
-        }
-    Que.innerHTML =`Qns ${qusCount}/10`
-
-
-    Quizz()
-
+    if (queIndex < quizData.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
 }
-nextQuestion()
+
+function showResult() {
+    document.querySelector("button").style.display = "none";
+
+    button.style.display = "none"
+
+    questions.innerHTML = `Your Score: ${score}/${quizData.length}`;
+    options.innerHTML = "";
+
+    const result = document.getElementById("Result");
+    result.innerHTML = "";
+
+    quizData.forEach((q, index) => {
+        let userAns = userAnswers[index] || "Not Attempted";
+
+        let container = document.createElement("div");
+
+        container.innerHTML = `
+            <h5>${index + 1}. ${q.question}</h5>
+            <p style="color:green;">Correct: ${q.answer}</p>
+            <p style="color:${userAns === q.answer ? "green" : "red"};">
+                Your Answer: ${userAns}
+            </p>
+        `;
+
+        result.appendChild(container);
+    });
+}
+
+loadQuestion();
