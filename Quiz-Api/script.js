@@ -55,10 +55,15 @@ let Que = document.getElementById("Que");
 let questions = document.getElementById("questions");
 let options = document.getElementById("options");
 let button = document.getElementById("btn");
+let qnsTimer = document.getElementById("timer");
+
 
 let queIndex = 0;
 let score = 0;
 let userAnswers = [];
+
+let TimerLeft = 30;
+let interval;
 
 function loadQuestion() {
     let current = quizData[queIndex];
@@ -77,6 +82,7 @@ function loadQuestion() {
 
         options.appendChild(btn);
     });
+    timer();
 }
 
 function selectAnswer(selected) {
@@ -106,6 +112,7 @@ function showResult() {
 
     button.style.display = "none"
 
+
     questions.innerHTML = `Your Score: ${score}/${quizData.length}`;
     options.innerHTML = "";
 
@@ -130,3 +137,23 @@ function showResult() {
 }
 
 loadQuestion();
+
+
+function timer() {
+    clearInterval(interval);
+    TimerLeft = 30;
+
+    qnsTimer.innerHTML = `Time Left: ${TimerLeft}`;
+
+    interval = setInterval(() => {
+        TimerLeft--;
+
+        qnsTimer.innerHTML = `Time Left: ${TimerLeft}`;
+
+        if (TimerLeft < 0) {
+            nextQuestion();
+
+            selectAnswer=null
+        }
+    }, 1000);
+}
