@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#img {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 3px solid #ddd;
+    transition: 0.4s ease-in-out;
+}
+
+.btn {
+    border-radius: 15px;
+}
+
