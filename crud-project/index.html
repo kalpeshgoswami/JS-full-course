@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pr-App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Product App</h2>
+
+    <input type="text" id="title" placeholder="Product Title">
+    <input type="number" id="price" placeholder="Price">
+    <input type="text" id="image" placeholder="Image URL">
+    <input type="text" id="category" placeholder="Category">
+    <button onclick="addProduct()">Add Product</button>
+
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search..." onkeyup="renderProducts()">
+
+        <select id="sort" onchange="renderProducts()">
+            <option value="">Sort</option>
+            <option value="low">Price Low → High</option>
+            <option value="high">Price High → Low</option>
+        </select>
+
+        <input type="text" id="filter" placeholder="Filter by category" onkeyup="renderProducts()">
+    </div>
+
+    <div id="productList"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
