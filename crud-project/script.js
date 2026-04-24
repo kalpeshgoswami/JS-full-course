@@ -174,8 +174,8 @@ function renderProducts() {
   let list = document.getElementById("productList");
   list.innerHTML = "";
 
-  let search = document.getElementById("search").value.toLowerCase();
-  let filter = document.getElementById("filter").value.toLowerCase();
+  let search = document.getElementById("search").value;
+  let filter = document.getElementById("filter").value;
   let sort = document.getElementById("sort").value;
 
   let filtered = products.filter(p =>
@@ -200,6 +200,7 @@ function renderProducts() {
         <p>₹${p.price}</p>
         <p>${p.category}</p>
         <button onclick="editProduct(${p.id})">Edit</button>
+         <button onclick="addToCart(${p.id})">Add To Cart</button>
         <button onclick="deleteProduct(${p.id})">Delete</button>
       </div>
     `;

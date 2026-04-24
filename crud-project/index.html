@@ -7,7 +7,7 @@
     <title>Pr-App</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+    
 <body>
     <h2>Product App</h2>
 
@@ -21,14 +21,14 @@
 
     <div class="controls">
         <input type="text" id="search" placeholder="Search..." onkeyup="renderProducts()">
-
-        <select id="sort" onchange="renderProducts()">
+        
+        <select id="sort" onclick="renderProducts()">
             <option value="">Sort</option>
             <option value="low">Price Low → High</option>
             <option value="high">Price High → Low</option>
         </select>
 
-        <input type="text" id="filter" placeholder="Filter by category" onkeyup="renderProducts()">
+        <input type="text" id="filter" placeholder="Filter by category" onclick="renderProducts()">
     </div>
 
     <div id="productList"></div>
