@@ -11,11 +11,13 @@
 <body>
     <h2>Product App</h2>
 
-    <input type="text" id="title" placeholder="Product Title">
-    <input type="number" id="price" placeholder="Price">
-    <input type="text" id="image" placeholder="Image URL">
-    <input type="text" id="category" placeholder="Category">
-    <button onclick="addProduct()">Add Product</button>
+    <div class="controls">
+        <input type="text" id="title" placeholder="Product Title">
+        <input type="number" id="price" placeholder="Price">
+        <input type="text" id="image" placeholder="Image URL">
+        <input type="text" id="category" placeholder="Category">
+        <button onclick="addProduct()">Add Product</button>
+    </div>
 
     <div class="controls">
         <input type="text" id="search" placeholder="Search..." onkeyup="renderProducts()">
