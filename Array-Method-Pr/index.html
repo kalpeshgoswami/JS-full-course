@@ -1,51 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Array-Method</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Array-project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container text-center">
+
+        <h2 class="mt-5">Array Project</h2>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="arrSize" placeholder="Enter Array Size">
+            </div>
+
+            <div class="col-auto">
+                <button class="btn btn-outline-success" id="startArr" onclick="ArrayNum()">Enter</button>
+            </div>
+
+        </div>
+
+        <div id="arrItem" class="mt-4"></div>
+
+        <h4 id="createArray"></h4>
+
+        <input type="text" id="inputValue">
+
+        <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
 
 
-        <label for="input" class="array1"></label>
-        <input type="number">
+            <button class="btn btn-outline-primary" id="pushBtn" onclick="pushBtn()">Push</button>
+            <button class="btn btn-outline-primary" id="popBtn" onclick="popBtn()">Pop</button>
+            <button class="btn btn-outline-primary" id="shiftBtn" onclick="shiftBtn()">Shift</button>
+            <button class="btn btn-outline-primary" id="unshiftBtn" onclick="unshiftBtn()">Unshift</button>
+            <button class="btn btn-outline-primary" id="reverseBtn" onclick="reverseBtn()">Reverse</button>
+            <button class="btn btn-outline-primary" id="toStringBtn" onclick="toStringBtn()">To String</button>
+            <button class="btn btn-outline-primary" id="lengthBtn" onclick="lengthBtn()">Length</button>
+            <button class="btn btn-outline-primary" id="indexOfBtn" onclick="indexOfBtn()">IndexOf</button>
+            <button class="btn btn-outline-primary" id="includesBtn" onclick="includesBtn()">Includes</button>
+            <button class="btn btn-outline-primary" id="sortBtn" onclick="sortBtn()">Sort</button>
+            <button class="btn btn-outline-primary" id="ascendingBtn" onclick="ascendingBtn()">Ascending</button>
+            <button class="btn btn-outline-primary" id="descendingBtn" onclick="descendingBtn()">Descending</button>
+            <button class="btn btn-outline-primary" id="findBtn" onclick="findBtn()">Find</button>
+            <button class="btn btn-outline-primary" id="FindIndexBtn">Find Index</button>
+            <button class="btn btn-outline-primary" id="someBtn" onclick="someBtn()">Some</button>
+            <button class="btn btn-outline-primary" id="everyBtn" onclick="everyBtn()">Every</button>
+            <button class="btn btn-outline-primary" id="filterBtn" onclick="filterBtn()">Filter</button>
+            <button class="btn btn-outline-primary" id="mapBtn" onclick="mapBtn()">Map</button>
+            <button class="btn btn-outline-primary" id="reduseBtn" onclick="reduceBtn()">Reduce</button>
+            <button class="btn btn-outline-primary" id="sliceBtn" onclick="sliceBtn()">Slice</button>
+            <button class="btn btn-outline-primary" id="joinBtn" onclick="joinBtn()">Join</button>
 
-        <label for="input" class="array2"></label>
-        <input type="number">
-
-
-        <label for="select">Select Method</label>
-
-        <select id="select">
-            <option value="push">push</option>
-            <option value="unshift">unshift</option>
-            <option value="pop">pop</option>
-            <option value="shift">shift</option>
-            <option value="length">length</option>
-            <option value="toString">toString</option>
-            <option value="reverse">reverse</option>
-            <option value="indexOf">indexOf</option>
-            <option value="includes">includes</option>
-            <option value="sort">sort</option>
-            <option value="ascending">ascending</option>
-            <option value="descending">descending</option>
-            <option value="find">find</option>
-            <option value="findIndex">findIndex</option>
-            <option value="some">some</option>
-            <option value="every">every</option>
-            <option value="filter">filter</option>
-            <option value="map">map</option>
-            <option value="reduce">reduce</option>
-        </select>
-
+        </div>
+        <div id="result"></div>
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="./script.js"></script>
 </body>
 
