@@ -1,0 +1,39 @@
+body {
+    background-color: #f5f7fa;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    border-radius: 8px;
+}
+
+button {
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#arrItem input {
+    max-width: 300px;
+    margin: 5px auto;
+}
+
+#createArray {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #444;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #0d6efd;
+}
