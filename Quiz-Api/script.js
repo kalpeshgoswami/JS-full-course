@@ -1,159 +1,199 @@
-const quizData = [
-    {
-        question: "What does JS stand for?",
-        options: ["Java Source", "JavaScript", "Just Script", "Jumbo Script"],
-        answer: "JavaScript"
-    },
-    {
-        question: "Which company developed JavaScript?",
-        options: ["Microsoft", "Netscape", "Google", "IBM"],
-        answer: "Netscape"
-    },
-    {
-        question: "Which keyword is used to declare a variable in JavaScript?",
-        options: ["var", "int", "string", "float"],
-        answer: "var"
-    },
-    {
-        question: "Which symbol is used for comments in JavaScript?",
-        options: ["//", "<!-- -->", "#", "**"],
-        answer: "//"
-    },
-    {
-        question: "What is the correct way to write a function?",
-        options: ["function myFunc()", "def myFunc()", "create myFunc()", "func myFunc()"],
-        answer: "function myFunc()"
-    },
-    {
-        question: "Which method converts JSON to a JavaScript object?",
-        options: ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.toObject()"],
-        answer: "JSON.parse()"
-    },
-    {
-        question: "Which operator is used for strict equality?",
-        options: ["==", "=", "===", "!="],
-        answer: "==="
-    },
-    {
-        question: "Which data type is NOT primitive?",
-        options: ["String", "Number", "Object", "Boolean"],
-        answer: "Object"
-    },
-    {
-        question: "How do you write an arrow function?",
-        options: ["() => {}", "=> () {}", "function => {}", "{} => ()"],
-        answer: "() => {}"
-    },
-    {
-        question: "Which method adds an element to the end of an array?",
-        options: ["push()", "pop()", "shift()", "unshift()"],
-        answer: "push()"
-    }
+let quizData = [
+  {
+    question: "What is JavaScript primarily used for?",
+    options: [
+      "Styling web pages",
+      "Structuring web pages",
+      "Adding interactivity to web pages",
+      "Database management",
+    ],
+    correctIndex: 2,
+  },
+  {
+    question: "Which keyword is used to declare a variable in JavaScript?",
+    options: ["var", "let", "const", "All of the above"],
+    correctIndex: 3,
+  },
+  {
+    question: "What will `typeof undefined` return?",
+    options: ["undefined", "object", "string", "number"],
+    correctIndex: 0,
+  },
+  {
+    question: "Which method is used to convert JSON to a JavaScript object?",
+    options: [
+      "JSON.parse()",
+      "JSON.stringify()",
+      "JSON.convert()",
+      "JSON.toObject()",
+    ],
+    correctIndex: 0,
+  },
+  {
+    question: "Which operator is used for strict equality?",
+    options: ["==", "=", "===", "!="],
+    correctIndex: 2,
+  },
+  {
+    question: "What will be the output of `1 + '2' + 3`?",
+    options: ["6", "123", "15", "Error"],
+    correctIndex: 1,
+  },
+  {
+    question: "Which function is used to delay execution in JavaScript?",
+    options: ["setTimeout()", "setInterval()", "delay()", "wait()"],
+    correctIndex: 0,
+  },
+  {
+    question: "What is a closure in JavaScript?",
+    options: [
+      "A loop structure",
+      "A function with access to its outer scope",
+      "An object property",
+      "A variable type",
+    ],
+    correctIndex: 1,
+  },
+  {
+    question: "Which array method removes the last element?",
+    options: ["push()", "pop()", "shift()", "unshift()"],
+    correctIndex: 1,
+  },
+  {
+    question: "What will Boolean('') return?",
+    options: ["true", "false", "null", "undefined"],
+    correctIndex: 1,
+  },
 ];
 
-let Que = document.getElementById("Que");
-let questions = document.getElementById("questions");
-let options = document.getElementById("options");
-let button = document.getElementById("btn");
-let qnsTimer = document.getElementById("timer");
-
+let QueNumber = document.getElementById("QueNum");
+let Timer = document.getElementById("timer");
+let Question = document.getElementById("showQue");
+let Option = document.getElementById("option");
+let Btn = document.getElementById("btn");
+let Result = document.getElementById("result");
 
 let queIndex = 0;
 let score = 0;
 let userAnswers = [];
-
+let selectedAnswer = null;
 let TimerLeft = 30;
 let interval;
 
-function loadQuestion() {
-    let current = quizData[queIndex];
+function loadQue() {
+  let currentQue = quizData[queIndex];
 
-    Que.innerText = `${queIndex + 1}/${quizData.length}`;
-    questions.innerText = current.question;
+  QueNumber.innerText = `Que ${queIndex + 1}/${quizData.length}`;
+  Question.innerText = currentQue.question;
 
-    options.innerHTML = "";
+  Option.innerHTML = "";
 
-    current.options.forEach((opt) => {
-        let btn = document.createElement("button");
-        btn.innerText = opt;
-        btn.classList.add("btn", "btn-outline-success", "m-2");
+  currentQue.options.forEach((opt, index) => {
+    let button = document.createElement("button");
 
-        btn.onclick = () => selectAnswer(opt);
+    button.innerHTML = opt;
+    button.classList.add("btn", "btn-outline-primary", "m-2");
 
-        options.appendChild(btn);
-    });
-    timer();
+    button.onclick = function () {
+      selectedAnswer = index;
+
+      userAnswers.push({
+        question: currentQue.question,
+        selected: index,
+        correct: currentQue.correctIndex,
+        options: currentQue.options,
+      });
+
+      nextQns();
+    };
+
+    Option.appendChild(button);
+  });
+
+  startTimer();
 }
 
-function selectAnswer(selected) {
-    let correct = quizData[queIndex].answer;
+loadQue();
 
-    userAnswers[queIndex] = selected;
+function startTimer() {
+  clearInterval(interval);
 
-    if (selected === correct) {
-        score++;
+  TimerLeft = 30;
+  Timer.innerText = `Time Left ${TimerLeft}`;
+
+  interval = setInterval(() => {
+    TimerLeft--;
+    Timer.innerText = `Time Left ${TimerLeft}`;
+
+    if (TimerLeft <= 0) {
+      clearInterval(interval);
+
+      userAnswers.push({
+        question: quizData[queIndex].question,
+        selected: null,
+        correct: quizData[queIndex].correctIndex,
+        options: quizData[queIndex].options,
+      });
+
+      nextQns();
     }
-
-    nextQuestion();
+  }, 1000);
 }
 
-function nextQuestion() {
-    queIndex++;
+function nextQns() {
+  clearInterval(interval);
 
-    if (queIndex < quizData.length) {
-        loadQuestion();
-    } else {
-        showResult();
-    }
+  if (selectedAnswer === quizData[queIndex].correctIndex) {
+    score++;
+  }
+
+  queIndex++;
+  selectedAnswer = null;
+
+  if (queIndex < quizData.length) {
+    loadQue();
+  } else {
+    quizResult();
+  }
 }
 
-function showResult() {
-    document.querySelector("button").style.display = "none";
 
-    button.style.display = "none"
+function quizResult() {
 
 
-    questions.innerHTML = `Your Score: ${score}/${quizData.length}`;
-    options.innerHTML = "";
-
-    const result = document.getElementById("Result");
-    result.innerHTML = "";
-
-    quizData.forEach((q, index) => {
-        let userAns = userAnswers[index] || "Not Attempted";
-
-        let container = document.createElement("div");
-
-        container.innerHTML = `
-            <h5>${index + 1}. ${q.question}</h5>
-            <p style="color:green;">Correct: ${q.answer}</p>
-            <p style="color:${userAns === q.answer ? "green" : "red"};">
-                Your Answer: ${userAns}
-            </p>
-        `;
-
-        result.appendChild(container);
-    });
-}
-
-loadQuestion();
+  Option.innerHTML = ""
+  Btn.style.display = "none"
+  Question.innerHTML = ""
+  Timer.style.display = "none"
+  QueNumber.innerHTML = ""
 
 
-function timer() {
-    clearInterval(interval);
-    TimerLeft = 30;
+  Result.innerHTML = `
+  <h3 class="text-center">Quiz Result</h3>
+  <h4 class="text-center">Result: ${score}/${quizData.length}</h4>
 
-    qnsTimer.innerHTML = `Time Left: ${TimerLeft}`;
+  <div class="mt-3">
+    <h3 class="text-center">Review Summary</h3>
 
-    interval = setInterval(() => {
-        TimerLeft--;
-
-        qnsTimer.innerHTML = `Time Left: ${TimerLeft}`;
-
-        if (TimerLeft < 0) {
-            nextQuestion();
-
-            selectAnswer=null
-        }
-    }, 1000);
+    <ul class="list-group">
+      ${userAnswers
+      .map(
+        (ans, index) => `
+        <li class="list-group-item">
+          <h5 class="text-center">Question ${index + 1}: ${ans.question}</h5>
+          <h6 class="text-center">
+            Your Answer: ${ans.selected !== null
+            ? ans.options[ans.selected]
+            : "Not answered"
+          }
+          </h6>
+          <h6 class="text-center">
+            Correct Answer: ${ans.options[ans.correct]}
+          </h6>
+        </li>`
+      )
+      .join("")}
+    </ul>
+  </div>
+  `;
 }

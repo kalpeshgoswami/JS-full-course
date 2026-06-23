@@ -2,49 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quiz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container  d-flex justify-content-center align-items-center mt-5 mb-5" > 
+  <div class="container">
 
-        <div class="Quiz text-center">
+    <h1>Quiz Api</h1>
 
-            <h2>Start Quiz</h2>
-
-            <div class="QNT d-flex justify-content-between">
-
-                <p id="Que">1/10</p>
-
-                <p id="timer">30</p>
-
-            </div>
-
-            <div class="questions" id="questions">
-                <h2>Questions</h2>
-            </div> 
-
-            <div class="options" id="options"></div>
-
-            <button class="btn btn-outline-success" id="btn" onclick="nextQuestion()">Next</button>
-
-
-            <div id="Result" class="Result"></div>
-
-        </div>
-
+    <div class="QnT">
+      <div id="QueNum">Question: 1/10</div>
+      <div id="timer">Time: 30</div>
     </div>
 
-    <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <div id="showQue"></div>
+    <div id="option"></div>
+    <button class="btn btn-outline-primary" onclick="nextQns()" id="btn">Next</button>
+
+    <div id="result"></div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
